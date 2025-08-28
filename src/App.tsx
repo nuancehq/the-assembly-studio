@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import ContactPage from './components/ContactPage';
 import FAQPage from './components/FAQPage';
 import CanadaPage from './components/CanadaPage';
+import BorderlessProductionPage from './components/BorderlessProductionPage';
 
 function HomePage() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/canada" element={<CanadaPage />} />
+            <Route path="/borderless-production" element={<BorderlessProductionPage />} />
           </Routes>
         </main>
         <Footer />
