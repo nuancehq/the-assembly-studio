@@ -33,8 +33,8 @@ export default function BorderlessProductionPage() {
           </h1>
           
           <p className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            The future of global manufacturing is here. Produce locally, deliver globally, 
-            eliminate borders—all through one intelligent platform.
+            Expand into the Canadian market without the hassle of cross-border shipping. 
+            Manufacture locally in Canada and deliver to your customers faster than ever.
           </p>
           
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -71,7 +71,7 @@ export default function BorderlessProductionPage() {
               Why Join the Beta?
             </h2>
             <p className="text-xl text-gray-600">
-              Get exclusive early access to revolutionary cross-border manufacturing
+              Be the first to access seamless Canadian market expansion
             </p>
           </div>
           
@@ -84,7 +84,7 @@ export default function BorderlessProductionPage() {
                 Exclusive Access
               </h3>
               <p className="mt-3 text-gray-700 leading-relaxed">
-                Be among the first to experience borderless manufacturing before public launch
+                Be among the first to manufacture in Canada without cross-border complications
               </p>
             </div>
             
@@ -96,7 +96,7 @@ export default function BorderlessProductionPage() {
                 Beta Pricing
               </h3>
               <p className="mt-3 text-gray-700 leading-relaxed">
-                Lock in special pricing and terms available only to beta participants
+                Lock in special Canadian manufacturing rates before public launch
               </p>
             </div>
             
@@ -108,7 +108,7 @@ export default function BorderlessProductionPage() {
                 Shape the Future
               </h3>
               <p className="mt-3 text-gray-700 leading-relaxed">
-                Your feedback directly influences product development and new features
+                Help us perfect Canadian market expansion for businesses like yours
               </p>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function BorderlessProductionPage() {
               How Borderless Production Works
             </h2>
             <p className="text-xl text-gray-600">
-              One platform. Global reach. Local production.
+              Sell to Canada. Manufacture in Canada. No borders, no delays.
             </p>
           </div>
           
@@ -139,10 +139,10 @@ export default function BorderlessProductionPage() {
                 </div>
                 <div className="pt-16 pb-8 px-8 bg-white rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-4">
-                    Global Network
+                    Canadian Network
                   </h3>
                   <p className="text-gray-600">
-                    Access certified manufacturing partners across multiple countries and regions
+                    Access our certified manufacturing partners across Canada's major markets
                   </p>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function BorderlessProductionPage() {
                     Smart Routing
                   </h3>
                   <p className="text-gray-600">
-                    AI-powered platform automatically routes orders to optimal production locations
+                    Orders automatically routed to the closest Canadian manufacturing facility
                   </p>
                 </div>
               </div>
@@ -171,10 +171,10 @@ export default function BorderlessProductionPage() {
                 </div>
                 <div className="pt-16 pb-8 px-8 bg-white rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-4">
-                    Local Delivery
+                    Canadian Delivery
                   </h3>
                   <p className="text-gray-600">
-                    Products manufactured and delivered locally, eliminating cross-border delays
+                    Products manufactured and delivered within Canada, eliminating customs delays
                   </p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function BorderlessProductionPage() {
               Revolutionary Features
             </h2>
             <p className="text-xl text-gray-600">
-              Everything you need for seamless global manufacturing
+              Everything you need to succeed in the Canadian market
             </p>
           </div>
           
@@ -202,9 +202,9 @@ export default function BorderlessProductionPage() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  Zero Customs Delays
+                  No Cross-Border Hassles
                 </h3>
-                <p className="text-gray-600 mt-2">Eliminate cross-border shipping complications with local production</p>
+                <p className="text-gray-600 mt-2">No duties, no customs delays, no cross-border shipping complications</p>
               </div>
             </div>
             
@@ -216,9 +216,9 @@ export default function BorderlessProductionPage() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  Faster Time to Market
+                  Faster Canadian Delivery
                 </h3>
-                <p className="text-gray-600 mt-2">Reduce delivery times by up to 75% with local manufacturing networks</p>
+                <p className="text-gray-600 mt-2">Deliver to Canadian customers 3x faster with local manufacturing</p>
               </div>
             </div>
             
@@ -230,9 +230,9 @@ export default function BorderlessProductionPage() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  Lower Total Costs
+                  Better Margins
                 </h3>
-                <p className="text-gray-600 mt-2">Eliminate duties, reduce shipping costs, and minimize inventory risk</p>
+                <p className="text-gray-600 mt-2">No duties or tariffs, lower shipping costs, better profit margins</p>
               </div>
             </div>
             
@@ -244,9 +244,9 @@ export default function BorderlessProductionPage() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  Zero Inventory Risk
+                  No Canadian Inventory
                 </h3>
-                <p className="text-gray-600 mt-2">On-demand production means no upfront inventory investment</p>
+                <p className="text-gray-600 mt-2">No need to stock inventory in Canada—we manufacture on demand</p>
               </div>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function BorderlessProductionPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
-                  <span>Priority access to new manufacturing locations</span>
+                  <span>Priority access to new Canadian manufacturing locations</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
@@ -273,7 +273,7 @@ export default function BorderlessProductionPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
-                  <span>Beta pricing locked for 12 months</span>
+                  <span>Canadian beta pricing locked for 12 months</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
@@ -283,7 +283,7 @@ export default function BorderlessProductionPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
-                  <span>Early access to new features and capabilities</span>
+                  <span>Early access to new Canadian market features</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
@@ -291,7 +291,7 @@ export default function BorderlessProductionPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
-                  <span>Custom integration support</span>
+                  <span>Custom Canadian market integration support</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
@@ -315,10 +315,10 @@ export default function BorderlessProductionPage() {
               </div>
               
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Ready to Go Borderless?
+                Ready to Expand into Canada?
               </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join the manufacturing revolution. Limited spots available for our exclusive beta program.
+                Skip the cross-border headaches and start selling in Canada today. Limited spots available for our exclusive beta program.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
