@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, DollarSign, Clock, Truck, Package, Store, ShoppingBag, CheckCircle, Zap, Globe, Users, MapPinCheck } from 'lucide-react';
+import { ArrowRight, DollarSign, Clock, Truck, Package, Store, ShoppingBag, CheckCircle, Zap, Globe, Users, MapPin as MapPinCheck } from 'lucide-react';
 
 export default function CanadaPage() {
   return (
