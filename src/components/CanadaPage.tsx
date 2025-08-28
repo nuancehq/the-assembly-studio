@@ -234,7 +234,7 @@ export default function CanadaPage() {
               How It Works
             </h2>
             <p className="text-xl text-gray-600">
-              That's it—no delays, no duties, no wasted inventory.
+              No delays, no duties, no wasted inventory.
             </p>
           </div>
           
@@ -296,7 +296,7 @@ export default function CanadaPage() {
         <div className="mt-32">
           <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-3xl p-12 text-white">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Why Canadian Businesses Choose The Assembly</h2>
+              <h2 className="text-3xl font-bold mb-4">Why Global Businesses Choose The Assembly</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="group">
