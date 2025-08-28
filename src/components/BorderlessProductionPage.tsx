@@ -329,13 +329,6 @@ export default function BorderlessProductionPage() {
                   Apply for Beta Access
                   <ArrowRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a 
-                  href="/contact" 
-                  className="group inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold shadow-lg border border-gray-200 hover:border-primary-600 hover:text-primary-600 transform hover:scale-105 transition-all duration-300"
-                >
-                  Schedule a Demo
-                  <ArrowRight className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
               
               <div className="mt-6 text-sm text-gray-500">
