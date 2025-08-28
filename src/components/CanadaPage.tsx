@@ -240,14 +240,14 @@ export default function CanadaPage() {
           
           <div className="relative">
             <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 -translate-y-1/2 hidden md:block"></div>
-            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-12">
-              <div className="group text-center">
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-12 pt-8">
+              <div className="group text-center relative">
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-10">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <span className="text-2xl font-bold text-white">1</span>
                   </div>
                 </div>
-                <div className="pt-12 bg-white p-8 rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
+                <div className="pt-16 pb-8 px-8 bg-white rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-4">
                     Send Your Files
                   </h3>
@@ -257,13 +257,13 @@ export default function CanadaPage() {
                 </div>
               </div>
               
-              <div className="group text-center">
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+              <div className="group text-center relative">
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-10">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <span className="text-2xl font-bold text-white">2</span>
                   </div>
                 </div>
-                <div className="pt-12 bg-white p-8 rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
+                <div className="pt-16 pb-8 px-8 bg-white rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-4">
                     We Manufacture
                   </h3>
@@ -273,13 +273,13 @@ export default function CanadaPage() {
                 </div>
               </div>
               
-              <div className="group text-center">
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+              <div className="group text-center relative">
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-10">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <span className="text-2xl font-bold text-white">3</span>
                   </div>
                 </div>
-                <div className="pt-12 bg-white p-8 rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
+                <div className="pt-16 pb-8 px-8 bg-white rounded-2xl shadow-lg border border-gray-100 group-hover:border-primary-200 group-hover:shadow-2xl transition-all duration-300">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-4">
                     Fast Local Shipping
                   </h3>
