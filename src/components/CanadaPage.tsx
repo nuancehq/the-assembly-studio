@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, DollarSign, Clock, Truck, Package, Store, ShoppingBag, CheckCircle, Zap, Globe, Users } from 'lucide-react';
+import { ArrowRight, DollarSign, Clock, Truck, Package, Store, ShoppingBag, CheckCircle, Zap, Globe, Users, Flag } from 'lucide-react';
 
 export default function CanadaPage() {
   return (
@@ -15,7 +15,7 @@ export default function CanadaPage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex items-center justify-center mb-8 gap-2">
-            <div className="w-8 h-6 bg-red-600 rounded-sm"></div>
+            <Flag className="h-6 w-6 text-red-400" />
             <span className="text-red-400 font-semibold tracking-wide">MADE IN CANADA</span>
           </div>
           
