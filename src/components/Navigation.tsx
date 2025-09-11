@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const scrollToSection = (sectionId: string) => {
+  const handleSectionClick = (sectionId: string) => {
+    // If we're not on the homepage, navigate there first
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    // If we're on the homepage, scroll to the section
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +36,7 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection('how-it-works')}
+              onClick={() => handleSectionClick('how-it-works')}
               className="text-gray-600 hover:text-primary-600 font-medium transition-colors"
             >
               How It Works
@@ -40,7 +48,7 @@ export default function Navigation() {
               Services
             </Link>
             <button 
-              onClick={() => scrollToSection('who-we-work-with')}
+              onClick={() => handleSectionClick('who-we-work-with')}
               className="text-gray-600 hover:text-primary-600 font-medium transition-colors"
             >
               Who It's For
@@ -74,7 +82,7 @@ export default function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               <button 
                 onClick={() => {
-                  scrollToSection('how-it-works');
+                  handleSectionClick('how-it-works');
                   setIsMenuOpen(false);
                 }}
                 className="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium transition-colors w-full text-left"
@@ -90,7 +98,7 @@ export default function Navigation() {
               </Link>
               <button 
                 onClick={() => {
-                  scrollToSection('who-we-work-with');
+                  handleSectionClick('who-we-work-with');
                   setIsMenuOpen(false);
                 }}
                 className="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium transition-colors w-full text-left"
