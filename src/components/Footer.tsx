@@ -20,10 +20,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-gray-500">
-              <li>Distributed Manufacturing</li>
-              <li>Local Production Networks</li>
-              <li>On-Demand Fulfillment</li>
-              <li>Supply Chain Solutions</li>
+              <li><a href="/services" className="hover:text-primary-600 font-medium">All Services</a></li>
+              <li><a href="/rapid-prototyping" className="hover:text-primary-600">Rapid Prototyping</a></li>
+              <li><a href="/mass-production" className="hover:text-primary-600">Scalable Production</a></li>
+              <li><a href="/print-on-demand" className="hover:text-primary-600">Print on Demand</a></li>
+              <li><a href="/borderless-production-service" className="hover:text-primary-600">Borderless Production</a></li>
             </ul>
           </div>
           <div>
@@ -31,7 +32,6 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-500">
               <li><a href="/about" className="hover:text-primary-600">About Us</a></li>
               <li><a href="/contact" className="hover:text-primary-600">Contact</a></li>
-              <li><a href="/faq" className="hover:text-primary-600">FAQ</a></li>
             </ul>
           </div>
           <div>
