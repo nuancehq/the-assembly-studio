@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle, X, ArrowRight, Package, Truck, TrendingUp, Users, Flag, DollarSign, Clock, Shield, Star, Phone, Mail, Factory, AlertTriangle, PlayCircle } from 'lucide-react';
 
 export default function EuropeanExpansionPage() {
@@ -25,6 +26,10 @@ export default function EuropeanExpansionPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>European Expansion - The Assembly</title>
+      </Helmet>
       {/* Header */}
       <header className="bg-white py-3">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">

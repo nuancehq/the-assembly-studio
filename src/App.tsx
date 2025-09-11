@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import WorldChanged from './components/WorldChanged';
@@ -8,12 +9,18 @@ import HowItWorks from './components/HowItWorks';
 import ModernCommerce from './components/ModernCommerce';
 import TestimonialsSection from './components/TestimonialsSection';
 import SustainabilitySection from './components/SustainabilitySection';
+import ServicesSection from './components/ServicesSection';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ContactPage from './components/ContactPage';
 import FAQPage from './components/FAQPage';
 import CanadaPage from './components/CanadaPage';
 import BorderlessProductionPage from './components/BorderlessProductionPage';
+import BorderlessProductionServicePage from './components/BorderlessProductionServicePage';
+import RapidPrototypingPage from './components/RapidPrototypingPage';
+import MassProductionPage from './components/MassProductionPage';
+import PrintOnDemandPage from './components/PrintOnDemandPage';
+import ServicesPage from './components/ServicesPage';
 import InternationalBrandsPage from './components/InternationalBrandsPage';
 import InternationalBrandsPageV1 from './components/InternationalBrandsPageV1';
 import InternationalBrandsPageV2 from './components/InternationalBrandsPageV2';
@@ -30,6 +37,7 @@ function HomePage() {
       <WorldChanged />
       <MeetTheAssembly />
       <HowItWorks />
+      <ServicesSection />
       <ModernCommerce />
       <TestimonialsSection />
       <SustainabilitySection />
@@ -63,8 +71,13 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/canada" element={<CanadaPage />} />
           <Route path="/borderless-production" element={<BorderlessProductionPage />} />
+          <Route path="/borderless-production-service" element={<BorderlessProductionServicePage />} />
+          <Route path="/rapid-prototyping" element={<RapidPrototypingPage />} />
+          <Route path="/mass-production" element={<MassProductionPage />} />
+          <Route path="/print-on-demand" element={<PrintOnDemandPage />} />
           <Route path="/international-brands" element={<InternationalBrandsPage />} />
           <Route path="/international-brands-v1" element={<InternationalBrandsPageV1 />} />
           <Route path="/international-brands-v2" element={<InternationalBrandsPageV2 />} />
@@ -82,8 +95,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </HelmetProvider>
   );
 }

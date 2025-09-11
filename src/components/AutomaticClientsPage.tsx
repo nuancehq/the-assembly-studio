@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle, X, ArrowRight, Package, Truck, TrendingUp, Users, Flag, DollarSign, Clock, Shield, Star, Phone, Mail } from 'lucide-react';
 
 export default function AutomaticClientsPage() {
@@ -25,6 +26,10 @@ export default function AutomaticClientsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Automatic Clients - The Assembly</title>
+      </Helmet>
       {/* Header */}
       <header className="bg-white border-b border-slate-200 py-4">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 flex justify-between items-center">

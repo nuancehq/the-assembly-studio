@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle, AlertTriangle, Truck, Factory, Zap, DollarSign, Phone, Clock, Users, Star, ArrowRight, TrendingUp, Shield, Globe, Package, Award, Timer, Mail } from 'lucide-react';
 
 export default function InternationalBrandsPageV2() {
@@ -75,6 +76,10 @@ export default function InternationalBrandsPageV2() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>International Brands V2 - The Assembly</title>
+      </Helmet>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-24 pt-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-green-600/10"></div>
