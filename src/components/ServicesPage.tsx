@@ -20,7 +20,7 @@ export default function ServicesPage() {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="flex items-center justify-center mb-8 gap-3">
+          <div className="flex items-center justify-center mt-8 mb-8 gap-3">
             <Settings className="h-6 w-6 text-primary-400" />
             <span className="text-primary-400 font-semibold tracking-wide">MANUFACTURING SERVICES</span>
           </div>
@@ -159,14 +159,14 @@ export default function ServicesPage() {
               </a>
             </div>
 
-            {/* Print on Demand */}
+            {/* DTC on Demand */}
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors">
                   <Package className="h-8 w-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Print on Demand</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">DTC on Demand</h3>
                   <p className="text-purple-600 font-semibold">Zero Inventory Risk</p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                 href="/print-on-demand" 
                 className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-700 transition-colors group-hover:gap-3"
               >
-                Learn More About Print on Demand
+                Learn More About DTC on Demand
                 <ArrowRight className="h-4 w-4 transition-all" />
               </a>
             </div>

@@ -50,7 +50,7 @@ export default function ServicesSection() {
             </div>
           </a>
 
-          {/* Print on Demand */}
+          {/* DTC on Demand */}
           <a 
             href="/print-on-demand"
             className="group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
@@ -58,7 +58,7 @@ export default function ServicesSection() {
             <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-4 group-hover:bg-purple-200 transition-colors">
               <Package className="h-6 w-6 text-purple-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Print on Demand</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">DTC on Demand</h3>
             <p className="text-gray-600 text-sm mb-4">
               Launch products without inventory risk. We manufacture and ship as orders come in.
             </p>

@@ -23,7 +23,7 @@ export default function Footer() {
               <li><a href="/services" className="hover:text-primary-600 font-medium">All Services</a></li>
               <li><a href="/rapid-prototyping" className="hover:text-primary-600">Rapid Prototyping</a></li>
               <li><a href="/mass-production" className="hover:text-primary-600">Scalable Production</a></li>
-              <li><a href="/print-on-demand" className="hover:text-primary-600">Print on Demand</a></li>
+              <li><a href="/print-on-demand" className="hover:text-primary-600">DTC on Demand</a></li>
               <li><a href="/borderless-production-service" className="hover:text-primary-600">Borderless Production</a></li>
             </ul>
           </div>

@@ -6,7 +6,7 @@ export default function PrintOnDemandPage() {
   return (
     <div className="pt-24 pb-16 bg-white">
       <Helmet>
-        <title>Print on Demand - Custom Manufacturing | The Assembly</title>
+        <title>DTC on Demand - Custom Manufacturing | The Assembly</title>
         <meta name="description" content="Launch products without inventory risk. Our print-on-demand service handles manufacturing and fulfillment for your e-commerce orders." />
       </Helmet>
 
@@ -80,7 +80,7 @@ export default function PrintOnDemandPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Print on Demand?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why DTC on Demand?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Perfect for entrepreneurs, e-commerce businesses, and brands looking to test new products without risk.
             </p>
@@ -124,7 +124,7 @@ export default function PrintOnDemandPage() {
       <section id="how-it-works" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">How Print on Demand Works</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How DTC on Demand Works</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Simple integration with your e-commerce platform. Orders automatically flow to production and fulfillment.
             </p>
