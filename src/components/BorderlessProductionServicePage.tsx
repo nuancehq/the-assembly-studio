@@ -4,7 +4,7 @@ import { ArrowRight, Globe, Zap, Shield, Clock, DollarSign, Users, CheckCircle, 
 
 export default function BorderlessProductionServicePage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pt-24 pb-16 bg-white">
       <Helmet>
         <title>Borderless Production - Manufacturing Solutions | The Assembly</title>
         <meta name="description" content="Expand globally with local manufacturing. The Assembly's Borderless Production connects your brand with distributed manufacturing networks worldwide." />

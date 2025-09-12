@@ -4,14 +4,14 @@ import { ArrowRight, Zap, Factory, Package, Globe, Clock, DollarSign, Users, Che
 
 export default function ServicesPage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pb-16 bg-white">
       <Helmet>
         <title>Manufacturing Services - Complete Production Solutions | The Assembly</title>
         <meta name="description" content="Comprehensive manufacturing services from rapid prototyping to mass production. 3D printing, injection molding, and global fulfillment solutions." />
       </Helmet>
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-700 py-24 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-slate-900 via-gray-800 to-slate-700 pt-24 pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:linear-gradient(0deg,transparent,black,transparent)]"></div>
         
         <div className="absolute inset-0 overflow-hidden">

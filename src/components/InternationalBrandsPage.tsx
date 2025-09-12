@@ -106,7 +106,7 @@ export default function InternationalBrandsPage() {
         <title>International Brands - The Assembly</title>
       </Helmet>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-24 pt-32 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-24 pt-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-green-600/10"></div>
         
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10 text-center">

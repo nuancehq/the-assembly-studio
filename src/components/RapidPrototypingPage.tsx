@@ -4,7 +4,7 @@ import { ArrowRight, Zap, Clock, Target, Shield, DollarSign, Users, CheckCircle,
 
 export default function RapidPrototypingPage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pt-24 pb-16 bg-white">
       <Helmet>
         <title>Rapid Prototyping - 3D Printing Services | The Assembly</title>
         <meta name="description" content="Fast, high-quality 3D printed prototypes. From concept to physical product in 24-48 hours. Perfect for product development and testing." />

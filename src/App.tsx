@@ -21,6 +21,7 @@ import RapidPrototypingPage from './components/RapidPrototypingPage';
 import MassProductionPage from './components/MassProductionPage';
 import PrintOnDemandPage from './components/PrintOnDemandPage';
 import ServicesPage from './components/ServicesPage';
+import IndustrialPrototypingLandingPage from './components/IndustrialPrototypingLandingPage';
 import InternationalBrandsPage from './components/InternationalBrandsPage';
 import InternationalBrandsPageV1 from './components/InternationalBrandsPageV1';
 import InternationalBrandsPageV2 from './components/InternationalBrandsPageV2';
@@ -72,6 +73,7 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/industrial-prototyping" element={<IndustrialPrototypingLandingPage />} />
           <Route path="/canada" element={<CanadaPage />} />
           <Route path="/borderless-production" element={<BorderlessProductionPage />} />
           <Route path="/borderless-production-service" element={<BorderlessProductionServicePage />} />

@@ -4,7 +4,7 @@ import { ArrowRight, Factory, TrendingUp, Shield, Globe, DollarSign, Users, Chec
 
 export default function MassProductionPage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pt-24 pb-16 bg-white">
       <Helmet>
         <title>Scalable Production - Flexible Manufacturing Solutions | The Assembly</title>
         <meta name="description" content="Scale your production seamlessly from 1 to 1 million units. Flexible manufacturing that grows with your business needs and market demand." />

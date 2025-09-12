@@ -3,7 +3,7 @@ import { ArrowRight, Globe, Zap, Shield, Clock, DollarSign, Users, CheckCircle, 
 
 export default function BorderlessProductionPage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pt-24 pb-16 bg-white">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:linear-gradient(0deg,transparent,black,transparent)]"></div>

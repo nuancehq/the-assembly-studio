@@ -4,7 +4,7 @@ import { ArrowRight, Package, Zap, Truck, Globe, DollarSign, Users, CheckCircle,
 
 export default function PrintOnDemandPage() {
   return (
-    <div className="pt-32 pb-16 bg-white">
+    <div className="pt-24 pb-16 bg-white">
       <Helmet>
         <title>Print on Demand - Custom Manufacturing | The Assembly</title>
         <meta name="description" content="Launch products without inventory risk. Our print-on-demand service handles manufacturing and fulfillment for your e-commerce orders." />
