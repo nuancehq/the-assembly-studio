@@ -30,6 +30,7 @@ import InternationalBrandsPageV4 from './components/InternationalBrandsPageV4';
 import AutomaticClientsPage from './components/AutomaticClientsPage';
 import CanadianExpansionPage from './components/CanadianExpansionPage';
 import EuropeanExpansionPage from './components/EuropeanExpansionPage';
+import VSLLandingPage from './components/VSLLandingPage';
 
 function HomePage() {
   return (
@@ -59,7 +60,8 @@ function AppContent() {
     '/international-brands-v1',
     '/international-brands-v2', 
     '/international-brands-v3',
-    '/international-brands-v4'
+    '/international-brands-v4',
+    '/vsl-landing'
   ];
   
   const showMainNavigation = !acFrameworkPages.includes(location.pathname);
@@ -88,6 +90,7 @@ function AppContent() {
           <Route path="/automatic-clients" element={<AutomaticClientsPage />} />
           <Route path="/canadian-expansion" element={<CanadianExpansionPage />} />
           <Route path="/european-expansion" element={<EuropeanExpansionPage />} />
+          <Route path="/vsl-landing" element={<VSLLandingPage />} />
         </Routes>
       </main>
       {showMainNavigation && <Footer />}
