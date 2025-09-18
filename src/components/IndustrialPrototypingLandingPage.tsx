@@ -73,21 +73,8 @@ This is a free prototype request from the industrial prototyping landing page.
         'QPSg0Q7xm3pXJzW_y'
       );
 
-      setStatus({
-        type: 'success',
-        message: 'Thank you! Your prototype request has been submitted. We\'ll review it within 2 hours and get back to you.'
-      });
-      
-      // Reset form
-      setFormData({
-        companyName: '',
-        nameTitle: '',
-        email: '',
-        phone: '',
-        partDescription: '',
-        projectStatus: '',
-        cadFile: null
-      });
+      // Redirect to thank you page
+      window.location.href = '/thank_you_page.html';
     } catch (error) {
       console.error('EmailJS error:', error);
       setStatus({
