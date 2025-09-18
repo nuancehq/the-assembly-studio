@@ -84,7 +84,7 @@ Type: Free Design Prototype Request`,
       
       // Add a small delay to ensure email is sent before redirect
       setTimeout(() => {
-        window.location.href = '/thank-you.html';
+        window.location.href = '/thank-you';
       }, 500);
       
     } catch (error) {
