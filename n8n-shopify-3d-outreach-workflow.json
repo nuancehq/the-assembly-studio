@@ -1,0 +1,454 @@
+{
+  "name": "Shopify 3D Print Store Outreach Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f1a2b3c4-d5e6-7f8g-9h0i-j1k2l3m4n5o6",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "searchQueries",
+              "value": "site:myshopify.com \"3d printed\" -site:apps.shopify.com\nsite:myshopify.com \"custom 3d print\"\nsite:myshopify.com \"3d printing service\"\nsite:myshopify.com \"printed miniatures\"\nsite:myshopify.com \"prototype printing\"\nsite:myshopify.com \"3d printed jewelry\"\nsite:myshopify.com \"custom figurines\""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+      "name": "Search Queries",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Split search queries into individual items\nconst queries = $input.first().json.searchQueries.split('\\n');\n\nreturn queries.map(query => ({\n  searchQuery: query.trim(),\n  source: 'google_search'\n}));"
+      },
+      "id": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+      "name": "Split Queries",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search",
+        "options": {
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "q",
+                "value": "={{ $json.searchQuery }}"
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_SERPAPI_KEY"
+              },
+              {
+                "name": "engine",
+                "value": "google"
+              },
+              {
+                "name": "num",
+                "value": "20"
+              }
+            ]
+          }
+        }
+      },
+      "id": "c3d4e5f6-g7h8-9i0j-1k2l-m3n4o5p6q7r8",
+      "name": "SerpAPI Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Extract Shopify store URLs from search results\nconst results = $input.first().json.organic_results || [];\n\nconst stores = results\n  .filter(result => result.link && result.link.includes('.myshopify.com'))\n  .map(result => {\n    const url = new URL(result.link);\n    const storeName = url.hostname.replace('.myshopify.com', '');\n    \n    return {\n      storeName: storeName,\n      storeUrl: `https://${storeName}.myshopify.com`,\n      title: result.title,\n      snippet: result.snippet,\n      searchQuery: $json.searchQuery\n    };\n  });\n\nreturn stores;"
+      },
+      "id": "d4e5f6g7-h8i9-0j1k-2l3m-n4o5p6q7r8s9",
+      "name": "Extract Store URLs",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.storeUrl }}/products.json",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
+      "name": "Get Store Products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Analyze products for 3D printing keywords\nconst products = $input.first().json.products || [];\nconst storeData = $input.last().json;\n\nconst keywords3D = [\n  '3d print', '3d printed', 'printed', 'custom print', 'prototype',\n  'additive manufacturing', 'rapid prototype', 'cnc', 'laser cut',\n  'custom made', 'personalized', 'bespoke', 'miniature', 'figurine'\n];\n\nlet score = 0;\nconst matchingProducts = [];\n\nproducts.forEach(product => {\n  const text = `${product.title} ${product.body_html || ''} ${(product.tags || []).join(' ')}`.toLowerCase();\n  \n  const matches = keywords3D.filter(keyword => text.includes(keyword));\n  if (matches.length > 0) {\n    score += matches.length;\n    matchingProducts.push({\n      title: product.title,\n      price: product.variants[0]?.price || 'N/A',\n      matches: matches\n    });\n  }\n});\n\nconst is3DStore = score >= 3; // Minimum threshold\n\nif (!is3DStore) {\n  return [];\n}\n\nreturn [{\n  ...storeData,\n  productCount: products.length,\n  score3D: score,\n  matchingProducts: matchingProducts.slice(0, 5), // Top 5 matching products\n  is3DPrintStore: true\n}];"
+      },
+      "id": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+      "name": "Validate 3D Store",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.storeUrl }}/pages/about",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "id": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+      "name": "Get About Page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.storeUrl }}/pages/contact",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "id": "h8i9j0k1-l2m3-4n5o-6p7q-r8s9t0u1v2w3",
+      "name": "Get Contact Page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Extract contact information from about and contact pages\nconst storeData = $input.first().json;\nconst aboutPage = $input.all().find(item => item.json.url?.includes('/about'))?.json?.data || '';\nconst contactPage = $input.all().find(item => item.json.url?.includes('/contact'))?.json?.data || '';\n\nconst combinedText = `${aboutPage} ${contactPage}`;\n\n// Email regex\nconst emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})/g;\nconst emails = [...new Set(combinedText.match(emailRegex) || [])];\n\n// Founder/Owner patterns\nconst founderRegex = /(?:founder|owner|ceo|started by|created by|founded by)\\s*:?\\s*([^,\\n.!?]{2,50})/gi;\nconst founderMatches = combinedText.match(founderRegex) || [];\nconst founders = founderMatches.map(match => \n  match.replace(/(?:founder|owner|ceo|started by|created by|founded by)\\s*:?\\s*/gi, '').trim()\n);\n\n// LinkedIn profile regex\nconst linkedinRegex = /(linkedin\\.com\\/in\\/[a-zA-Z0-9-]+)/g;\nconst linkedinProfiles = [...new Set(combinedText.match(linkedinRegex) || [])];\n\n// Phone regex\nconst phoneRegex = /(\\+?1?[-\\.\\s]?\\(?[0-9]{3}\\)?[-\\.\\s]?[0-9]{3}[-\\.\\s]?[0-9]{4})/g;\nconst phones = [...new Set(combinedText.match(phoneRegex) || [])];\n\nreturn [{\n  ...storeData,\n  contactInfo: {\n    emails: emails.slice(0, 3),\n    founders: founders.slice(0, 2),\n    linkedinProfiles: linkedinProfiles.slice(0, 2),\n    phones: phones.slice(0, 2)\n  },\n  extractedAt: new Date().toISOString()\n}];"
+      },
+      "id": "i9j0k1l2-m3n4-5o6p-7q8r-s9t0u1v2w3x4",
+      "name": "Extract Contact Info",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.hunter.io/v2/domain-search",
+        "options": {
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "domain",
+                "value": "={{ $json.storeUrl.replace('https://', '').replace('http://', '') }}"
+              },
+              {
+                "name": "api_key",
+                "value": "YOUR_HUNTER_API_KEY"
+              }
+            ]
+          }
+        }
+      },
+      "id": "j0k1l2m3-n4o5-6p7q-8r9s-t0u1v2w3x4y5",
+      "name": "Hunter Email Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Combine contact data from multiple sources\nconst storeData = $input.first().json;\nconst hunterData = $input.last().json?.data || {};\n\n// Merge emails from Hunter.io\nconst hunterEmails = (hunterData.emails || []).map(e => e.value);\nconst allEmails = [...new Set([...storeData.contactInfo.emails, ...hunterEmails])];\n\n// Score the lead quality\nlet leadScore = 0;\nif (allEmails.length > 0) leadScore += 20;\nif (storeData.contactInfo.founders.length > 0) leadScore += 30;\nif (storeData.contactInfo.linkedinProfiles.length > 0) leadScore += 25;\nif (storeData.productCount > 10) leadScore += 15;\nif (storeData.score3D > 5) leadScore += 10;\n\n// Determine lead quality\nlet leadQuality = 'Low';\nif (leadScore >= 70) leadQuality = 'High';\nelse if (leadScore >= 40) leadQuality = 'Medium';\n\nreturn [{\n  ...storeData,\n  contactInfo: {\n    ...storeData.contactInfo,\n    emails: allEmails.slice(0, 5)\n  },\n  leadScore: leadScore,\n  leadQuality: leadQuality,\n  hunterData: {\n    companyName: hunterData.organization || storeData.storeName,\n    totalEmails: hunterData.emails?.length || 0\n  }\n}];"
+      },
+      "id": "k1l2m3n4-o5p6-7q8r-9s0t-u1v2w3x4y5z6",
+      "name": "Enrich & Score Lead",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Generate personalized outreach messages\nconst lead = $input.first().json;\n\n// Extract key product info for personalization\nconst topProduct = lead.matchingProducts[0];\nconst productCategory = getProductCategory(topProduct?.title || '');\nconst founderName = extractFirstName(lead.contactInfo.founders[0] || 'there');\n\nfunction getProductCategory(title) {\n  const categories = {\n    'miniature': ['miniature', 'mini', 'gaming', 'tabletop', 'rpg'],\n    'jewelry': ['jewelry', 'ring', 'pendant', 'earring', 'bracelet'],\n    'prototype': ['prototype', 'model', 'concept', 'design'],\n    'custom parts': ['part', 'component', 'replacement', 'custom'],\n    'figurine': ['figurine', 'figure', 'character', 'statue']\n  };\n  \n  for (const [category, keywords] of Object.entries(categories)) {\n    if (keywords.some(kw => title.toLowerCase().includes(kw))) {\n      return category;\n    }\n  }\n  return '3D printed products';\n}\n\nfunction extractFirstName(fullName) {\n  if (!fullName || fullName === 'there') return 'there';\n  return fullName.split(' ')[0];\n}\n\n// LinkedIn message template\nconst linkedinMessage = `Hi ${founderName},\n\nI noticed ${lead.storeName} creates amazing ${productCategory} using 3D printing. Your ${topProduct?.title || 'products'} caught my attention - the detail is impressive!\n\nWe help Shopify stores like yours expand into new markets (like Canada) where shipping costs often kill sales. One of our clients saw their Canadian revenue jump 340% after switching to local 3D printing.\n\nWould you be open to a quick 15-minute conversation about eliminating shipping headaches for your customers? No sales pitch - just genuine insights.\n\nBest,\nNichelle`;\n\n// Email template\nconst emailSubject = `${lead.storeName}'s ${productCategory} + Canadian expansion opportunity`;\nconst emailMessage = `Hi ${founderName},\n\nYour ${topProduct?.title || productCategory} on ${lead.storeName} looks fantastic! I can tell you put real craftsmanship into your 3D printed products.\n\nQuick question: Are you losing Canadian sales due to $100+ shipping fees and customs delays?\n\nWe've helped similar 3D printing businesses like yours:\n• Eliminate customs fees entirely\n• Reduce delivery from weeks to 3 days  \n• Increase Canadian sales by 340% on average\n\nInterested in a brief conversation about expanding your reach? I have a few spots open this week.\n\nBest regards,\nNichelle\n\nP.S. Here's our case study: https://theassemblystudio.com/vsl-landing`;\n\nreturn [{\n  ...lead,\n  outreach: {\n    linkedinMessage: linkedinMessage,\n    emailSubject: emailSubject,\n    emailMessage: emailMessage,\n    personalization: {\n      founderName: founderName,\n      productCategory: productCategory,\n      topProduct: topProduct?.title || 'N/A'\n    }\n  }\n}];"
+      },
+      "id": "l2m3n4o5-p6q7-8r9s-0t1u-v2w3x4y5z6a7",
+      "name": "Generate Outreach",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "create",
+        "additionalFields": {
+          "company": "={{ $json.storeName }}",
+          "email": "={{ $json.contactInfo.emails[0] }}",
+          "firstname": "={{ $json.outreach.personalization.founderName }}",
+          "hs_lead_status": "NEW",
+          "lifecyclestage": "lead",
+          "website": "={{ $json.storeUrl }}"
+        },
+        "properties": {
+          "customProperties": [
+            {
+              "name": "lead_score",
+              "value": "={{ $json.leadScore }}"
+            },
+            {
+              "name": "lead_quality",
+              "value": "={{ $json.leadQuality }}"
+            },
+            {
+              "name": "product_category",
+              "value": "={{ $json.outreach.personalization.productCategory }}"
+            },
+            {
+              "name": "store_product_count",
+              "value": "={{ $json.productCount }}"
+            }
+          ]
+        }
+      },
+      "id": "m3n4o5p6-q7r8-9s0t-1u2v-w3x4y5z6a7b8",
+      "name": "Create HubSpot Contact",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "your-email@example.com",
+        "subject": "New 3D Print Lead: {{ $json.storeName }}",
+        "emailFormat": "html",
+        "message": "<h3>New 3D Printing Store Lead</h3>\n<p><strong>Store:</strong> {{ $json.storeName }}<br>\n<strong>URL:</strong> <a href=\"{{ $json.storeUrl }}\">{{ $json.storeUrl }}</a><br>\n<strong>Lead Quality:</strong> {{ $json.leadQuality }}<br>\n<strong>Score:</strong> {{ $json.leadScore }}/100<br>\n<strong>Product Count:</strong> {{ $json.productCount }}<br>\n<strong>Category:</strong> {{ $json.outreach.personalization.productCategory }}</p>\n\n<h4>Contact Info:</h4>\n<p><strong>Founder:</strong> {{ $json.contactInfo.founders[0] }}<br>\n<strong>Email:</strong> {{ $json.contactInfo.emails[0] }}<br>\n<strong>LinkedIn:</strong> {{ $json.contactInfo.linkedinProfiles[0] }}</p>\n\n<h4>LinkedIn Message:</h4>\n<div style=\"background: #f5f5f5; padding: 10px; border-left: 3px solid #0077b5;\">\n{{ $json.outreach.linkedinMessage }}\n</div>\n\n<h4>Email Message:</h4>\n<div style=\"background: #f5f5f5; padding: 10px; border-left: 3px solid #34495e;\">\n<strong>Subject:</strong> {{ $json.outreach.emailSubject }}<br><br>\n{{ $json.outreach.emailMessage }}\n</div>"
+      },
+      "id": "n4o5p6q7-r8s9-0t1u-2v3w-x4y5z6a7b8c9",
+      "name": "Email Notification",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search Queries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Queries": {
+      "main": [
+        [
+          {
+            "node": "Split Queries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Queries": {
+      "main": [
+        [
+          {
+            "node": "SerpAPI Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI Search": {
+      "main": [
+        [
+          {
+            "node": "Extract Store URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Store URLs": {
+      "main": [
+        [
+          {
+            "node": "Get Store Products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Store Products": {
+      "main": [
+        [
+          {
+            "node": "Validate 3D Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate 3D Store": {
+      "main": [
+        [
+          {
+            "node": "Get About Page",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Contact Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get About Page": {
+      "main": [
+        [
+          {
+            "node": "Extract Contact Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contact Page": {
+      "main": [
+        [
+          {
+            "node": "Extract Contact Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Contact Info": {
+      "main": [
+        [
+          {
+            "node": "Hunter Email Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hunter Email Search": {
+      "main": [
+        [
+          {
+            "node": "Enrich & Score Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich & Score Lead": {
+      "main": [
+        [
+          {
+            "node": "Generate Outreach",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Outreach": {
+      "main": [
+        [
+          {
+            "node": "Create HubSpot Contact",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Email Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "shopify-outreach",
+      "name": "Shopify Outreach"
+    }
+  ],
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": 1,
+  "versionId": "1"
+}
