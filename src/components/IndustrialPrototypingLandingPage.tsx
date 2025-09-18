@@ -55,7 +55,7 @@ export default function IndustrialPrototypingLandingPage() {
       console.log('Attempting to send email via EmailJS...');
       
       const result = await emailjs.send(
-        'service_849y9ai',
+        'service_nliq19m',
         'template_37u1t1c', 
         {
           from_name: formData.nameTitle,
