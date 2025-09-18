@@ -74,7 +74,7 @@ This is a free prototype request from the industrial prototyping landing page.
       );
 
       // Redirect to thank you page
-      window.location.href = '/thank_you_page.html';
+      window.location.href = '/thank-you.html';
     } catch (error) {
       console.error('EmailJS error:', error);
       setStatus({
