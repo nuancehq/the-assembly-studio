@@ -32,6 +32,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-500">
               <li><a href="/about" className="hover:text-primary-600">About Us</a></li>
               <li><a href="/contact" className="hover:text-primary-600">Contact</a></li>
+              <li><a href="/privacy-policy" className="hover:text-primary-600">Privacy Policy</a></li>
+              <li><a href="/terms-of-use" className="hover:text-primary-600">Terms of Use</a></li>
             </ul>
           </div>
           <div>
@@ -43,8 +45,13 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200">
+        <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-gray-400">© 2025 The Assembly. All rights reserved.</p>
+          <div className="flex space-x-4 mt-2 sm:mt-0">
+            <a href="/privacy-policy" className="text-sm text-gray-400 hover:text-primary-600">Privacy Policy</a>
+            <span className="text-gray-300">|</span>
+            <a href="/terms-of-use" className="text-sm text-gray-400 hover:text-primary-600">Terms of Use</a>
+          </div>
         </div>
       </div>
     </footer>
