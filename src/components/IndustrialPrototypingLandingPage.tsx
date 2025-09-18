@@ -49,37 +49,49 @@ export default function IndustrialPrototypingLandingPage() {
     setIsSubmitting(true);
     setStatus({ type: null, message: '' });
 
+    console.log('Form submission started...', formData);
+
     try {
-      // Send email via EmailJS
-      await emailjs.send(
+      console.log('Attempting to send email via EmailJS...');
+      
+      const result = await emailjs.send(
         'service_849y9ai',
         'template_37u1t1c', 
         {
           from_name: formData.nameTitle,
           from_email: formData.email,
           subject: `Industrial Prototype Request - ${formData.companyName}`,
-          message: `
+          message: `NEW INDUSTRIAL PROTOTYPE REQUEST
+
 Company: ${formData.companyName}
-Name & Title: ${formData.nameTitle}
+Contact: ${formData.nameTitle}
 Email: ${formData.email}
 Phone: ${formData.phone || 'Not provided'}
-Part Description: ${formData.partDescription}
+
+Part Description: 
+${formData.partDescription}
+
 Project Status: ${formData.projectStatus}
 CAD File: ${formData.cadFile ? formData.cadFile.name : 'Not provided'}
 
-This is a free prototype request from the industrial prototyping landing page.
-          `,
+Source: Industrial Prototyping Landing Page
+Type: Free Design Prototype Request`,
         },
         'QPSg0Q7xm3pXJzW_y'
       );
 
-      // Redirect to thank you page
-      window.location.href = '/thank-you.html';
+      console.log('EmailJS success:', result);
+      
+      // Add a small delay to ensure email is sent before redirect
+      setTimeout(() => {
+        window.location.href = '/thank-you.html';
+      }, 500);
+      
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('EmailJS error details:', error);
       setStatus({
         type: 'error',
-        message: 'Sorry, there was an error submitting your request. Please try again or contact us directly.'
+        message: `Error: ${error instanceof Error ? error.message : 'Unknown error occurred'}. Please try again or contact us directly.`
       });
     } finally {
       setIsSubmitting(false);
